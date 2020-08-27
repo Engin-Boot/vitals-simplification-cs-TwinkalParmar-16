@@ -10,12 +10,14 @@ namespace Vital_Checks
         public static bool vitalsAreOk(float bpm, float spo2, float respRate)
         {
             //True only when all the vitals is okay else false
-            if (RespRateChecker.isRespRateOkay(respRate) && SpO2Checker.isSpO2Okay(spo2) && BpmChecker.isBpmOkay(bpm))
+            bool isOkayRespAndSpO2 = ExpressionEvaluation.evaluate(RespRateChecker.isRespRateOkay(respRate), SpO2Checker.isSpO2Okay(spo2));
+            if (isOkayRespAndSpO2 && BpmChecker.isBpmOkay(bpm))
             {
                 return true;
             }
-                return false;
-            
+
+            return false;
         }
     }
+    
 }

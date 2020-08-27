@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vital_Checks
+﻿namespace Vital_Checks
 {
     // This class is responsible to check the expected result
     //(true/false) from the given combination of vitals
@@ -19,10 +15,5 @@ namespace Vital_Checks
                 Message.printMessage(expactedValue, resultantValue);
             }
         }
-       
-
-       
-
-   
     }
 }

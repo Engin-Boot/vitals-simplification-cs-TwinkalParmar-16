@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vital_Checks
+﻿namespace Vital_Checks
 {
     //This class is responsible to check resp rate is okay or not.
     class RespRateChecker

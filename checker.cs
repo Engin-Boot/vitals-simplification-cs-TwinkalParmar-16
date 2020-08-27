@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Vital_Checks
 {
-    // This class is responsible to detect when any of the body vitals go out of limits
+    //This program detects when any of the body vitals go out of limits. 
+    //The purpose is to treat without delay.
     class checker
     {
-        public static bool vitalsAreOk(float bpm, float spo2, float respRate)
+        static int Main(string[] args)
         {
-            //True only when all the vitals is okay else false
-            bool isOkayRespAndSpO2 = ExpressionEvaluation.evaluate(RespRateChecker.isRespRateOkay(respRate), SpO2Checker.isSpO2Okay(spo2));
-            if (isOkayRespAndSpO2 && BpmChecker.isBpmOkay(bpm))
-            {
-                return true;
-            }
-
-            return false;
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(100, 95, 60));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(40, 91, 92));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(50, 95, 75));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(175, 95, 75));
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(90, 95, 75));
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(97, 100, 75));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(101, 93, 20));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(101, 100, 105));
+            Console.WriteLine("All ok");
+            return 0;
         }
     }
-    
+
 }

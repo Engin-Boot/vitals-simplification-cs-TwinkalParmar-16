@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Vital_Checks
+﻿namespace Vital_Checks
 {
     class ExpressionEvaluation
     {

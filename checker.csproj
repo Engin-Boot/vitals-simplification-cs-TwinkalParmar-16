@@ -5,6 +5,10 @@
     <Compile Include="Message.cs"/>
     <Compile Include="VitalChecker.cs"/>
     <Compile Include="ExpectedResultFalse.cs"/>  
+    <Compile Include="ExpressionEvaluation.cs"/>  
+    <Compile Include="RespRateChecker.cs"/>  
+    <Compile Include="SpO2Checker.cs"/>  
+    <Compile Include="BpmChecker.cs"/>  
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)"/>  

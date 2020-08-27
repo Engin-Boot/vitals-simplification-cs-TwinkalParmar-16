@@ -14,9 +14,8 @@ namespace Vital_Checks
             {
                 return true;
             }
-            else {
                 return false;
-            }
+            
         }
     }
 }

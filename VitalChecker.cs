@@ -6,9 +6,13 @@
        
             public static bool vitalsAreOk(float bpm, float spo2, float respRate)
             {
-                //True only when all the vitals is okay else false
-                bool isOkayRespAndSpO2 = ExpressionEvaluation.evaluate(RespRateChecker.isRespRateOkay(respRate), SpO2Checker.isSpO2Okay(spo2));
-                if (isOkayRespAndSpO2 && BpmChecker.isBpmOkay(bpm))
+            //True only when all the vitals is okay else false
+            RangeChecker checkBPM = new RangeChecker(70,150);
+            RangeChecker checkSpO2 = new RangeChecker(90,500);
+            RangeChecker checkRespRate = new RangeChecker(30,95);
+            bool isOkayRespAndSpO2 = ExpressionEvaluation.evaluate(checkRespRate.checkRange(respRate), checkSpO2.checkRange(spo2));
+
+            if (isOkayRespAndSpO2 && checkBPM.checkRange(bpm))
                 {
                     return true;
                 }

@@ -1,34 +1,24 @@
-using System;
-using System.Diagnostics;
+﻿using System;
 
-class Checker
+namespace Vital_Checks
 {
-    static bool vitalsAreOk(float bpm, float spo2, float respRate) {
-        if(bpm < 70 || bpm > 150) {
-            return false;
-        } else if(spo2 < 90) {
-            return false;
-        } else if(respRate < 30 || respRate > 95) {
-            return false;
-        }
-        return true;
-    }
-    static void ExpectTrue(bool expression) {
-        if(!expression) {
-            Console.WriteLine("Expected true, but got false");
-            Environment.Exit(1);
-        }
-    }
-    static void ExpectFalse(bool expression) {
-        if(expression) {
-            Console.WriteLine("Expected false, but got true");
-            Environment.Exit(1);
+    //This program detects when any of the body vitals go out of limits. 
+    //The purpose is to treat without delay.
+    class checker
+    {
+        static int Main(string[] args)
+        {
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(100, 95, 60));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(40, 91, 92));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(50, 95, 75));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(175, 95, 75));
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(90, 95, 75));
+            ExpectedResultTrue.ExpectTrue(VitalChecker.vitalsAreOk(97, 100, 75));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(101, 93, 20));
+            ExpectedResultFalse.ExpectFalse(VitalChecker.vitalsAreOk(101, 100, 105));
+            Console.WriteLine("All ok");
+            return 0;
         }
     }
-    static int Main() {
-        ExpectTrue(vitalsAreOk(100, 95, 60));
-        ExpectFalse(vitalsAreOk(40, 91, 92));
-        Console.WriteLine("All ok");
-        return 0;
-    }
+
 }
